@@ -1,0 +1,61 @@
+.contacto {
+  padding: 8rem 0;
+  background: var(--black);
+  position: relative;
+  overflow: hidden;
+}
+.contacto::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 50%; transform: translateX(-50%);
+  width: 600px; height: 600px;
+  background: radial-gradient(ellipse, rgba(201,168,76,0.05) 0%, transparent 70%);
+  pointer-events: none;
+}
+.contacto-inner { max-width: 720px; margin: 0 auto; text-align: center; }
+.contacto-desc { color: var(--white-dim); margin-bottom: 2rem; }
+.contacto-links {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 3rem;
+}
+.contacto-link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.25rem;
+  border: 1px solid var(--dark-4);
+  border-radius: 4px;
+  font-size: 0.875rem;
+  color: var(--gray-light);
+  transition: all 0.3s;
+  text-decoration: none;
+}
+.contacto-link:hover { border-color: var(--gold); color: var(--gold); }
+.contacto-form { text-align: left; display: flex; flex-direction: column; gap: 1.25rem; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+.form-group { display: flex; flex-direction: column; gap: 0.5rem; }
+.form-group label {
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gray-light);
+}
+.form-group input, .form-group textarea {
+  background: var(--dark-2);
+  border: 1px solid var(--dark-4);
+  border-radius: 4px;
+  padding: 0.875rem 1rem;
+  color: var(--white);
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  transition: border-color 0.3s;
+  resize: vertical;
+  outline: none;
+}
+.form-group input::placeholder, .form-group textarea::placeholder { color: var(--gray); }
+.form-group input:focus, .form-group textarea:focus { border-color: rgba(201,168,76,0.5); }
+.btn-sent { background: #2a7a3b !important; color: #fff !important; }
+@media (max-width: 600px) { .form-row { grid-template-columns: 1fr; } }

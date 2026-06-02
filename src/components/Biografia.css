@@ -1,0 +1,52 @@
+.biografia {
+  padding: 8rem 0;
+  background: var(--dark);
+}
+.bio-content {
+  display: grid;
+  grid-template-columns: 1fr 360px;
+  gap: 5rem;
+  align-items: center;
+}
+.bio-text p { color: var(--white-dim); margin-bottom: 1.25rem; font-size: 1.025rem; }
+.bio-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 2rem; }
+.tag {
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.4rem 0.9rem;
+  border: 1px solid rgba(201,168,76,0.3);
+  border-radius: 100px;
+  color: var(--gold);
+}
+.bio-img-frame { position: relative; }
+.bio-img-placeholder {
+  background: var(--dark-3);
+  border: 1px solid var(--dark-4);
+  border-radius: 4px;
+  aspect-ratio: 3/4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  color: var(--gray);
+  font-size: 0.875rem;
+  text-align: center;
+  padding: 2rem;
+}
+.mic-icon { font-size: 3rem; }
+.bio-img-deco {
+  position: absolute;
+  bottom: -1rem; right: -1rem;
+  width: 60%; height: 60%;
+  border-right: 2px solid var(--gold);
+  border-bottom: 2px solid var(--gold);
+  border-radius: 0 0 4px 0;
+  opacity: 0.3;
+  pointer-events: none;
+}
+@media (max-width: 900px) {
+  .bio-content { grid-template-columns: 1fr; }
+  .bio-image { max-width: 320px; }
+}
