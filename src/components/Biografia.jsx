@@ -16,7 +16,7 @@ export default function Biografia() {
             </h2>
             <p>
               Héctor Lee Vargas es uno de los actores de doblaje más reconocidos del
-              doblaje mexicano. Con una carrera que supera los <strong>40 años</strong>,
+              doblaje mexicano. Con una carrera que supera los <strong>50 años</strong>,
               su voz ha dado vida a algunos de los personajes más entrañables del cine
               y la televisión de habla hispana.
             </p>
@@ -40,7 +40,7 @@ export default function Biografia() {
           <div className="bio-image" ref={imageRef}>
             <div className="bio-img-frame">
               <div className="bio-img-placeholder">
-                <img src="public/Hector.webp" alt="Héctor Lee Vargas" />
+                <img src="/Hector.webp" alt="Héctor Lee Vargas" />
 
               </div>
               <div className="bio-img-deco" />
