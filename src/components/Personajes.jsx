@@ -3,20 +3,21 @@ import { useReveal } from '../hooks/useReveal'
 import './Personajes.css'
 
 const PERSONAJES = [
-  { img: '/personajes/et.jpg',       name: 'E.T.',          obra: 'E.T. el Extraterrestre',            year: '1982 · Steven Spielberg',      badge: 'Cine' },
-  { img: '/personajes/gonzo.jpg',    name: 'Gonzo',         obra: 'Los Muppets',                        year: 'Múltiples producciones',        badge: 'Disney' },
-  { img: '/personajes/animal.jpg',   name: 'Animal',        obra: 'Los Muppets',                        year: 'Múltiples producciones',        badge: 'Disney' },
-  { img: '/personajes/iago.jpg',     name: 'Iago',          obra: 'Aladdin',                            year: '1992 · Disney',                 badge: 'Disney' },
-  { img: '/personajes/kaiosama.png', name: 'Kaiosama',      obra: 'Dragon Ball Z',                      year: 'Serie / Película',              badge: 'Anime' },
-  { img: '/personajes/pinguino.png', name: 'El Pingüino',   obra: 'Batman Regresa',                     year: '1992 · Tim Burton',             badge: 'Cine' },
-  { img: '/personajes/smee.jpg',     name: 'Mr. Smee',      obra: 'Jake y los Piratas de Nunca Jamás',  year: 'Serie Disney Jr.',              badge: 'Disney' },
-  { img: '/personajes/bocon.png',    name: 'Bocón el Rudo', obra: 'Cómo Entrenar a tu Dragón',          year: '2010 · DreamWorks',             badge: 'Animación' },
+  { img: '/personajes/et.jpg',       clip: 'RT8QWvDMz1U', name: 'E.T.',          obra: 'E.T. el Extraterrestre',            year: '1982 · Steven Spielberg',      badge: 'Cine' },
+  { img: '/personajes/gonzo.jpg',    clip: 'XTlnOLs57wg', name: 'Gonzo',         obra: 'Los Muppets',                        year: 'Múltiples producciones',        badge: 'Disney' },
+  { img: '/personajes/animal.jpg',   clip: 'XTlnOLs57wg', name: 'Animal',        obra: 'Los Muppets',                        year: 'Múltiples producciones',        badge: 'Disney' },
+  { img: '/personajes/iago.jpg',     clip: 'GGQbVes6v_c', name: 'Iago',          obra: 'Aladdin',                            year: '1992 · Disney',                 badge: 'Disney' },
+  { img: '/personajes/kaiosama.png', clip: 't6TYv18GWxo', name: 'Kaiosama',      obra: 'Dragon Ball Z',                      year: 'Serie / Película',              badge: 'Anime' },
+  { img: '/personajes/pinguino.png', clip: 'RT8QWvDMz1U', name: 'El Pingüino',   obra: 'Batman Regresa',                     year: '1992 · Tim Burton',             badge: 'Cine' },
+  { img: '/personajes/smee.jpg',     clip: 'RT8QWvDMz1U', name: 'Mr. Smee',      obra: 'Jake y los Piratas de Nunca Jamás',  year: 'Serie Disney Jr.',              badge: 'Disney' },
+  { img: '/personajes/bocon.png',    clip: '89pUQ5QZl28', name: 'Bocón el Rudo', obra: 'Cómo Entrenar a tu Dragón',          year: '2010 · DreamWorks',             badge: 'Animación' },
 ]
 
 const FILTERS = ['Todos', 'Cine', 'Disney', 'Anime', 'Animación']
 
 export default function Personajes() {
   const [active, setActive] = useState('Todos')
+  const [activeClip, setActiveClip] = useState(null)
   const headerRef = useReveal()
 
   const filtered = active === 'Todos'
@@ -49,8 +50,9 @@ export default function Personajes() {
         <div className="personajes-grid">
           {filtered.map((p) => (
             <div className="personaje-card" key={p.name}>
-              <div className="card-img-wrap">
+              <div className="card-img-wrap" onClick={() => setActiveClip(p.clip)}>
                 <img src={p.img} alt={p.name} />
+                <div className="card-play-btn" aria-label={`Ver clip de ${p.name}`}>▶</div>
               </div>
               <div className="card-body">
                 <h3>{p.name}</h3>
@@ -62,6 +64,27 @@ export default function Personajes() {
           ))}
         </div>
       </div>
+
+      {activeClip && (
+        <div className="clip-modal-overlay" onClick={() => setActiveClip(null)}>
+          <div className="clip-modal" onClick={e => e.stopPropagation()}>
+            <button
+              className="clip-modal-close"
+              onClick={() => setActiveClip(null)}
+              aria-label="Cerrar video"
+            >✕</button>
+            <div className="clip-modal-embed">
+              <iframe
+                src={`https://www.youtube.com/embed/${activeClip}?autoplay=1&rel=0`}
+                title="Clip de personaje"
+                frameBorder="0"
+                allow="autoplay; encrypted-media; picture-in-picture"
+                allowFullScreen
+              />
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   )
 }

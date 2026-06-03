@@ -2,7 +2,7 @@ import { useReveal } from '../hooks/useReveal'
 import './Biografia.css'
 
 export default function Biografia() {
-  const textRef  = useReveal()
+  const textRef = useReveal()
   const imageRef = useReveal(0.1)
 
   return (
@@ -40,8 +40,8 @@ export default function Biografia() {
           <div className="bio-image" ref={imageRef}>
             <div className="bio-img-frame">
               <div className="bio-img-placeholder">
-                <div className="mic-icon">🎙️</div>
-                <p>Foto de Héctor Lee Vargas</p>
+                <img src="public/Hector.webp" alt="Héctor Lee Vargas" />
+
               </div>
               <div className="bio-img-deco" />
             </div>
