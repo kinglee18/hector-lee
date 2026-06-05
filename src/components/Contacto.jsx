@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useReveal } from '../hooks/useReveal'
+import { supabase } from '../utils/supabase'
 import './Contacto.css'
 
 const LINKS = [
@@ -10,13 +11,33 @@ const LINKS = [
 
 export default function Contacto() {
   const ref = useReveal()
-  const [sent, setSent] = useState(false)
+  const [status, setStatus] = useState('idle') // 'idle' | 'loading' | 'sent' | 'error'
+  const [errorMsg, setErrorMsg] = useState('')
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    setSent(true)
-    setTimeout(() => setSent(false), 3500)
-    e.target.reset()
+    const form = e.target
+    const data = {
+      nombre:  form.nombre.value.trim(),
+      email:   form.email.value.trim(),
+      asunto:  form.asunto.value.trim(),
+      mensaje: form.mensaje.value.trim(),
+    }
+
+    setStatus('loading')
+    setErrorMsg('')
+
+    const { error } = await supabase.from('contacto').insert(data)
+
+    if (error) {
+      setStatus('error')
+      setErrorMsg('No se pudo enviar el mensaje. Por favor intenta de nuevo.')
+      return
+    }
+
+    setStatus('sent')
+    form.reset()
+    setTimeout(() => setStatus('idle'), 4000)
   }
 
   return (
@@ -65,8 +86,15 @@ export default function Contacto() {
               <label htmlFor="mensaje">Mensaje</label>
               <textarea id="mensaje" name="mensaje" rows={5} placeholder="Cuéntanos sobre tu proyecto..." required />
             </div>
-            <button type="submit" className={`btn btn-full ${sent ? 'btn-sent' : 'btn-primary'}`}>
-              {sent ? '✓ Mensaje enviado' : 'Enviar Mensaje'}
+            {status === 'error' && (
+              <p className="form-error">{errorMsg}</p>
+            )}
+            <button
+              type="submit"
+              disabled={status === 'loading'}
+              className={`btn btn-full ${status === 'sent' ? 'btn-sent' : 'btn-primary'} ${status === 'loading' ? 'btn-loading' : ''}`}
+            >
+              {status === 'loading' ? 'Enviando…' : status === 'sent' ? '✓ Mensaje enviado' : 'Enviar Mensaje'}
             </button>
           </form>
         </div>

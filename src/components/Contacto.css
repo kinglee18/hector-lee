@@ -58,4 +58,11 @@
 .form-group input::placeholder, .form-group textarea::placeholder { color: var(--gray); }
 .form-group input:focus, .form-group textarea:focus { border-color: rgba(201,168,76,0.5); }
 .btn-sent { background: #2a7a3b !important; color: #fff !important; }
+.btn-loading { opacity: 0.65; cursor: not-allowed; }
+.form-error {
+  color: #e05c5c;
+  font-size: 0.875rem;
+  text-align: center;
+  padding: 0.5rem 0;
+}
 @media (max-width: 600px) { .form-row { grid-template-columns: 1fr; } }
