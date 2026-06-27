@@ -4,6 +4,7 @@ import Stats from './components/Stats'
 import Biografia from './components/Biografia'
 import Personajes from './components/Personajes'
 import Videos from './components/Videos'
+import Demos from './components/Demos'
 import Contacto from './components/Contacto'
 import Footer from './components/Footer'
 
@@ -17,6 +18,7 @@ export default function App() {
         <Biografia />
         <Personajes />
         <Videos />
+        <Demos />
         <Contacto />
       </main>
       <Footer />

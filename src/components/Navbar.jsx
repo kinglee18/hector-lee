@@ -6,6 +6,7 @@ const links = [
   { href: '#biografia',  label: 'Biografía' },
   { href: '#personajes', label: 'Personajes' },
   { href: '#videos',     label: 'Videos' },
+  { href: '#demos',      label: 'Demos' },
 ]
 
 export default function Navbar() {

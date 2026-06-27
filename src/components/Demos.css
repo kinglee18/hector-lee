@@ -1,0 +1,124 @@
+.demos { padding: 8rem 0; background: var(--dark-2); }
+
+.demos-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  margin-top: 0.5rem;
+}
+
+.demo-card {
+  background: var(--dark);
+  border: 1px solid var(--dark-4);
+  border-radius: 4px;
+  padding: 1.75rem 2rem;
+  transition: border-color 0.3s;
+}
+.demo-card:hover { border-color: rgba(201,168,76,0.3); }
+
+.demo-card-top {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.demo-icon {
+  flex-shrink: 0;
+  width: 52px;
+  height: 52px;
+  background: rgba(201,168,76,0.08);
+  border: 1px solid rgba(201,168,76,0.2);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gold);
+}
+
+.demo-meta { flex: 1; }
+.demo-meta h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.05rem;
+  margin: 0.2rem 0 0.25rem;
+}
+.demo-meta p { font-size: 0.85rem; color: var(--gray-light); margin: 0; }
+
+.demo-lang {
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+  border: 1px solid rgba(201,168,76,0.3);
+  padding: 0.25rem 0.6rem;
+  border-radius: 2px;
+  white-space: nowrap;
+  align-self: flex-start;
+}
+
+/* ── Audio player ─────────────────────────────── */
+.audio-player {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.play-btn {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1.5px solid var(--gold);
+  background: transparent;
+  color: var(--gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.25s, color 0.25s;
+}
+.play-btn:hover {
+  background: var(--gold);
+  color: var(--black);
+}
+
+.audio-track-wrap { flex: 1; }
+
+.audio-progress-bar {
+  position: relative;
+  height: 4px;
+  background: var(--dark-4);
+  border-radius: 2px;
+  cursor: pointer;
+  margin-bottom: 0.45rem;
+}
+.audio-progress-fill {
+  height: 100%;
+  background: var(--gold);
+  border-radius: 2px;
+  transition: width 0.1s linear;
+}
+.audio-progress-thumb {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 12px;
+  height: 12px;
+  background: var(--gold);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.audio-time {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  color: var(--gray-light);
+  letter-spacing: 0.03em;
+}
+
+@media (max-width: 768px) {
+  .demo-card { padding: 1.25rem 1rem; }
+  .demo-card-top { flex-wrap: wrap; }
+  .demo-lang { order: -1; margin-left: auto; }
+}
